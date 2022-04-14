@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import com.aplicacion.pmo1_ejercicio_3_1.Models.Employee;
@@ -16,10 +17,14 @@ public class AdapterListEmployee extends BaseAdapter {
 
     private Context context;
     private ArrayList<Employee> listItem;
+    private ArrayList<Employee> filterlist;
+
+    private CustomFilter filter;
 
     public AdapterListEmployee(Context context, ArrayList<Employee> listItem) {
         this.context = context;
         this.listItem = listItem;
+        this.filterlist = listItem;
     }
 
     @Override
@@ -51,7 +56,58 @@ public class AdapterListEmployee extends BaseAdapter {
         return view;
     }
 
-    public Employee getEmployee(int i){
-        return listItem.get(i);
+    //Filter
+    /**********************************************************************************/
+
+    class CustomFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            FilterResults filterResults = new FilterResults();
+
+            if(charSequence != null && charSequence.length()>0){
+
+                charSequence = charSequence.toString().toUpperCase();
+
+                ArrayList<Employee> filters = new ArrayList<>();
+
+                for(int i = 0;i < filterlist.size(); i++){
+
+                    if((filterlist.get(i).getNames() + filterlist.get(i).getSurnames()).toUpperCase().contains(charSequence)){
+
+                        filters.add(filterlist.get(i));
+                    }
+                }
+
+                filterResults.count = filters.size();
+                filterResults.values = filters;
+
+            }else {
+
+                filterResults.count = filterlist.size();
+                filterResults.values = filterlist;
+            }
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            listItem = (ArrayList<Employee>) filterResults.values;
+            notifyDataSetChanged();
+        }
     }
+
+    public Filter getFilter(){
+
+        if(filter == null){
+            filter = new CustomFilter();
+        }
+
+        return filter;
+    }
+
+
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_dialog"
+    >
+
+    <TextView
+        android:id="@+id/dialogInfoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:text="Nombre: Abdiel Emanuel Licona Escobar"/>
+
+    <TextView
+        android:id="@+id/dialogInfoJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Puestro de trabajo: Director Ejecutivo"/>
+
+    <TextView
+        android:id="@+id/dialogInfoAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Edad: 23 años"/>
+
+    <TextView
+        android:id="@+id/dialogInfoDirection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Direccion: La Ceiba, Atlantida"/>
+
+</LinearLayout>

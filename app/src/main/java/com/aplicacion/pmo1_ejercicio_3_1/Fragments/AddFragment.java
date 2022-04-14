@@ -71,11 +71,7 @@ public class AddFragment extends Fragment {
     }
 
     private void setListeners(){
-
-
         btnSave.setOnClickListener(v -> saveEmployee());
-
-
 
     }
 
