@@ -11,6 +11,7 @@
         android:theme="@style/Theme.PMO1_Ejercicio_3_1">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
